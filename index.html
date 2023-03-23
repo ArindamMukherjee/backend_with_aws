@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skilancer Solar</title>
+    <style>
+        body {
+            background-color: rgb(242, 242, 242);
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 20px 0px 0px 50px;
+            background-color: white;
+            box-shadow: 0px 0px 8px #888888;
+            max-width: 80%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #333333;
+            color: white;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .company-details {
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+        .button-container {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .button {
+            background-color: skyblue;
+            color: white;
+            padding: 10px 20px;
+            border: red;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: lightblue;
+        }
+        #data-table {
+            display: none;
+
+        
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: skyblue;">Skilancer Solar</h1>
+
+    <div class="company-details">
+        <p>Company Name: Hild Solar</p>
+        <p>Address: Delhi</p>
+        <p>Phone: 555-555-5555</p>
+    </div>
+
+    <div class="button-container">
+        <button class="button" onclick="toggleTable()">View Data</button>
+    </div>    
+
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Total Runs</th>
+                <th>Runtime Today</th>
+                <th>V Panel</th>
+                <th>V Battery</th>
+                <th>Temperature</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row.ID }}</td>
+                <td>{{ row.total_runs }}</td>
+                <td>{{ row.runtime_today }}</td>
+                <td>{{ row.V_panel }}</td>
+                <td>{{ row.V_battery }}</td>
+                <td>{{ row.temperature }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        function toggleTable() {
+            var table = document.getElementById("data-table");
+            if (table.style.display === "none") {
+                table.style.display = "table";
+            } else {
+                table.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
